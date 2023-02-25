@@ -2,8 +2,8 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'io.github.cyberjar09.transform_struct_string_depth'
+version '0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -11,11 +11,21 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testImplementation 'junit:junit:4.13.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'org.apache.kafka:connect-api:3.4.0'
     implementation 'org.apache.kafka:kafka-streams:3.4.0'
+    implementation 'org.apache.kafka:connect-transforms:3.4.0'
 }
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+                'Version': "${getArchiveVersion()}"
+        )
+    }
 }
